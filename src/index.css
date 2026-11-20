@@ -1,0 +1,75 @@
+@import "tailwindcss";
+
+:root {
+  /* Coral Tea Brand Ramp (Figma 01 Color · 12:104) */
+  --coral-50: #FFF8F7;
+  --coral-100: #FFE6E2;
+  --coral-200: #FFE0DC;
+  --coral-300: #FFC4BC;
+  --coral-400: #FF896C;
+  --coral-500: #F6546A;
+  --coral-600: #D43A52;
+  --coral-700: #B72F45;
+  --coral-800: #92243B;
+  --coral-900: #6B1E31;
+
+  /* Warm Neutrals */
+  --neutral-0: #FFFFFF;
+  --neutral-50: #FFF3F0;
+  --neutral-100: #F1E8E5;
+  --neutral-200: #E7D8D4;
+  --neutral-300: #BDAEAA;
+  --neutral-500: #756966;
+  --neutral-700: #625653;
+  --neutral-900: #2D2524;
+
+  /* Semantic Status Colors */
+  --status-expired-fg: #853426;
+  --status-expired-bg: #F2D4CB;
+  --status-expiring-fg: #80500B;
+  --status-expiring-bg: #FFF1D6;
+  --status-safe-fg: #236B45;
+  --status-safe-bg: #E7F5EC;
+  --status-unknown-fg: #595959;
+  --status-unknown-bg: #F1F1F1;
+  --status-info-fg: #1D4ED8;
+  --status-info-bg: #EFF6FF;
+}
+
+@layer base {
+  html,
+  body,
+  #root {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: 'Be Vietnam Pro', -apple-system, BlinkMacSystemFont, sans-serif;
+    background-color: var(--coral-50);
+    color: var(--neutral-900);
+    -webkit-font-smoothing: antialiased;
+  }
+}
+
+.slide-surface {
+  background-color: var(--neutral-0);
+  border: 1px solid var(--neutral-200);
+  border-radius: 16px;
+}
+
+.slide-subtle {
+  background-color: var(--neutral-50);
+  border: 1px solid var(--neutral-200);
+  border-radius: 14px;
+}
+
+.scrollbar-thin::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+.scrollbar-thin::-webkit-scrollbar-track {
+  background: transparent;
+}
+.scrollbar-thin::-webkit-scrollbar-thumb {
+  background: var(--neutral-200);
+  border-radius: 999px;
+}
