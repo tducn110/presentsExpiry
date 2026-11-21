@@ -33,6 +33,7 @@ export const TOC_SECTIONS = [
       { idx: 4, code: '03', title: 'Chốt 5 mục tiêu cần đạt' },
       { idx: 5, code: '04', title: 'Truy vết từ nhu cầu đến kiểm tra' },
       { idx: 6, code: '05', title: 'Toàn bộ app gồm 6 nhóm tính năng gì?' },
+      { idx: 7, code: '06', title: 'Sơ đồ Use Case (31 UC)' },
     ],
   },
   {
@@ -41,11 +42,11 @@ export const TOC_SECTIONS = [
     title: 'Trọng tâm tính năng, Wireframe & Ràng buộc',
     desc: 'Điểm ăn tiền của 6 tính năng, đối chiếu Figma Low-fi/Mid-fi và chạy thử vòng đời khép kín.',
     slides: [
-      { idx: 7, code: '06', title: 'Ghi đúng món, tìm lại đúng chỗ' },
-      { idx: 8, code: '07', title: 'Biết món cần chú ý & giữ lượng chuẩn' },
-      { idx: 9, code: '08', title: 'Mua sắm có đối chiếu kho' },
-      { idx: 10, code: '09', title: 'Ràng buộc chất lượng (NFR)' },
-      { idx: 11, code: '10', title: 'Chạy thử trọn vẹn 1 vòng nghiệp vụ' },
+      { idx: 8, code: '07', title: 'Ghi đúng món, tìm lại đúng chỗ' },
+      { idx: 9, code: '08', title: 'Biết món cần chú ý & giữ lượng chuẩn' },
+      { idx: 10, code: '09', title: 'Mua sắm có đối chiếu kho' },
+      { idx: 11, code: '10', title: 'Ràng buộc chất lượng (NFR)' },
+      { idx: 12, code: '11', title: 'Chạy thử trọn vẹn 1 vòng nghiệp vụ' },
     ],
   },
   {
@@ -54,7 +55,7 @@ export const TOC_SECTIONS = [
     title: 'Kết luận & Kế hoạch tiếp theo',
     desc: '6 giá trị đạt được, 53 màn hình Figma và định hướng phát triển bản web hoàn chỉnh.',
     slides: [
-      { idx: 12, code: '11', title: 'Chốt kết luận & Kế hoạch' },
+      { idx: 13, code: '12', title: 'Chốt kết luận & Kế hoạch' },
     ],
   },
 ];
@@ -67,13 +68,59 @@ export const SLIDE_TITLES = [
   { id: 'goals', short: '03 · G1–G5', section: '3. Mục tiêu & Yêu cầu' },
   { id: 'trace', short: '04 · Truy vết', section: '3. Truy vết & Phạm vi' },
   { id: 'features', short: '05 · Tính năng', section: '4. Thiết kế tính năng' },
-  { id: 'f01-f03', short: '06 · F01–F03', section: '4. F01–F03 & Wireframe' },
-  { id: 'f04-f05', short: '07 · F04–F05', section: '4. F04–F05 & Wireframe' },
-  { id: 'f06', short: '08 · F06', section: '4. F06 & Wireframe' },
-  { id: 'nfr', short: '09 · NFR', section: '4. Yêu cầu phi chức năng' },
-  { id: 'workflow', short: '10 · Nghiệp vụ', section: '5. Vòng nghiệp vụ' },
-  { id: 'conclusion', short: '11 · Kết luận', section: '7. Kết luận' },
+  { id: 'usecases', short: '06 · Use Case', section: '4. Sơ đồ Use Case (31 UC)' },
+  { id: 'f01-f03', short: '07 · F01–F03', section: '4. F01–F03 & Wireframe' },
+  { id: 'f04-f05', short: '08 · F04–F05', section: '4. F04–F05 & Wireframe' },
+  { id: 'f06', short: '09 · F06', section: '4. F06 & Wireframe' },
+  { id: 'nfr', short: '10 · NFR', section: '4. Yêu cầu phi chức năng' },
+  { id: 'workflow', short: '11 · Nghiệp vụ', section: '5. Vòng nghiệp vụ' },
+  { id: 'conclusion', short: '12 · Kết luận', section: '7. Kết luận' },
 ] as const;
+
+export const USE_CASE_DIAGRAMS = [
+  {
+    id: 'uc-account',
+    label: 'Tài khoản (2 UC)',
+    title: 'Hệ thống Expiry — Tài khoản (UC-01, UC-02)',
+    src: './figma/uc-account.png',
+  },
+  {
+    id: 'uc-f01',
+    label: 'F01 · Thêm (3 UC)',
+    title: 'Hệ thống Expiry — F01 — Thêm thực phẩm (UC-03–05)',
+    src: './figma/uc-f01.png',
+  },
+  {
+    id: 'uc-f02',
+    label: 'F02 · Quản lý (8 UC)',
+    title: 'Hệ thống Expiry — F02 — Quản lý thực phẩm (UC-06–13)',
+    src: './figma/uc-f02.png',
+  },
+  {
+    id: 'uc-f03',
+    label: 'F03 · Danh mục & Nơi cất (4 UC)',
+    title: 'Hệ thống Expiry — F03 — Danh mục và nơi bảo quản (UC-14–17)',
+    src: './figma/uc-f03.png',
+  },
+  {
+    id: 'uc-f04',
+    label: 'F04 · Hạn & Nhắc (6 UC)',
+    title: 'Hệ thống Expiry — F04 — Hạn dùng và nhắc nhở (UC-18–23)',
+    src: './figma/uc-f04.png',
+  },
+  {
+    id: 'uc-f05',
+    label: 'F05 · Lượng & Insights (6 UC)',
+    title: 'Hệ thống Expiry — F05 — Số lượng và Insights (UC-24–29)',
+    src: './figma/uc-f05.png',
+  },
+  {
+    id: 'uc-f06',
+    label: 'F06 · Mua sắm (2 UC)',
+    title: 'Hệ thống Expiry — F06 — Mua sắm và đối chiếu kho (UC-30–31)',
+    src: './figma/uc-f06.png',
+  },
+];
 
 export const BUSINESS_GOALS_ROWS = [
   {

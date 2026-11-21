@@ -10,6 +10,7 @@ import { SlideNeeds } from './components/slides/SlideNeeds';
 import { SlideBusinessGoals } from './components/slides/SlideBusinessGoals';
 import { SlideTraceability } from './components/slides/SlideTraceability';
 import { SlideFeaturesOverview } from './components/slides/SlideFeaturesOverview';
+import { SlideUseCases } from './components/slides/SlideUseCases';
 import { SlideFeatureGroup } from './components/slides/SlideFeatureGroup';
 import { SlideNfr } from './components/slides/SlideNfr';
 import { SlideWorkflow } from './components/slides/SlideWorkflow';
@@ -109,6 +110,8 @@ export default function App() {
       case 6:
         return <SlideFeaturesOverview />;
       case 7:
+        return <SlideUseCases />;
+      case 8:
         return (
           <SlideFeatureGroup
             badge={F01_F03_DATA.badge}
@@ -117,7 +120,7 @@ export default function App() {
             wireframes={F01_F03_DATA.wireframes}
           />
         );
-      case 8:
+      case 9:
         return (
           <SlideFeatureGroup
             badge={F04_F05_DATA.badge}
@@ -126,7 +129,7 @@ export default function App() {
             wireframes={F04_F05_DATA.wireframes}
           />
         );
-      case 9:
+      case 10:
         return (
           <SlideFeatureGroup
             badge={F06_DATA.badge}
@@ -136,11 +139,11 @@ export default function App() {
             wireframes={F06_DATA.wireframes}
           />
         );
-      case 10:
-        return <SlideNfr />;
       case 11:
-        return <SlideWorkflow />;
+        return <SlideNfr />;
       case 12:
+        return <SlideWorkflow />;
+      case 13:
         return <SlideConclusion />;
       default:
         return null;
@@ -156,8 +159,8 @@ export default function App() {
       <header className="flex shrink-0 items-center justify-between border-b border-[#E7D8D4] bg-white px-5 py-2.5">
         <div className="flex items-center gap-4">
           <ExpiryLogo variant="compact" />
-          <span className="hidden h-4 w-px bg-[#E7D8D4] sm:block" />
-          <span className="hidden text-xs font-bold text-[#625653] sm:block">
+          <span className="hidden h-4 w-px bg-[#E7D8D4] xl:block" />
+          <span className="hidden text-xs font-bold text-[#625653] xl:block">
             Nhóm 2 · Systems Engineering
           </span>
         </div>
