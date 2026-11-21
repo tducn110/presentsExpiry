@@ -24,7 +24,7 @@ export const SlideFeaturesOverview: React.FC = () => {
       <div className="flex flex-wrap items-end justify-between gap-3">
         <div>
           <span className="inline-block rounded-full bg-[#FFE6E2] px-3 py-1 text-xs font-bold text-[#B72F45]">
-            3 · THIẾT KẾ TÍNH NĂNG
+            PHẦN II · BỨC TRANH 6 NHÓM TÍNH NĂNG (31 USE CASES)
           </span>
           <h2 className="mt-2 text-2xl font-extrabold tracking-tight text-[#2D2524] sm:text-3xl">
             6 nhóm tính năng giải quyết nhu cầu (F01–F06)

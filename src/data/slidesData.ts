@@ -9,16 +9,59 @@ export interface WireframePair {
 export const HERO_META = {
   course: 'Systems Engineering',
   team: 'Nhóm 2',
-  members: [
-    'Nguyễn Tâm Đức (24020005)',
-    'Trần Bá Nguyên (24040002)',
-    'Huỳnh Nguyễn Nhật Linh (24040001)',
-  ],
-  advisor: 'GVHD: Nguyễn Đức Tài',
-  loop: ['Ghi nhận', 'Theo dõi', 'Cập nhật', 'Đối chiếu', 'Mua tiếp'],
+  loop: ['1. Mua về ghi nhận', '2. Theo dõi hạn dùng', '3. Dùng / Bỏ cập nhật', '4. Đối chiếu kho', '5. Mua tiếp'],
 };
 
+export const TOC_SECTIONS = [
+  {
+    part: 'Phần I',
+    duration: '~2 phút',
+    title: 'Mở đầu, Phạm vi & Hiện trạng',
+    desc: 'Định nghĩa hệ thống 4 thành phần, ranh giới in/out-of-scope và 3 vấn đề thực tế.',
+    slides: [
+      { idx: 0, code: 'Intro', title: 'Màn mở đầu & Ý tưởng cốt lõi (10s)' },
+      { idx: 2, code: '01', title: 'Hệ thống này là gì và làm tới đâu?' },
+      { idx: 3, code: '02', title: 'Vì sao làm hệ thống này?' },
+    ],
+  },
+  {
+    part: 'Phần II',
+    duration: '~2 phút 30 giây',
+    title: 'Mục tiêu, Truy vết & Bức tranh tính năng',
+    desc: 'Chuyển hóa bài toán thành 5 mục tiêu, chuỗi truy vết SE và 6 cụm tính năng.',
+    slides: [
+      { idx: 4, code: '03', title: 'Chốt 5 mục tiêu cần đạt' },
+      { idx: 5, code: '04', title: 'Truy vết từ nhu cầu đến kiểm tra' },
+      { idx: 6, code: '05', title: 'Toàn bộ app gồm 6 nhóm tính năng gì?' },
+    ],
+  },
+  {
+    part: 'Phần III',
+    duration: '~5 phút',
+    title: 'Trọng tâm tính năng, Wireframe & Ràng buộc',
+    desc: 'Điểm ăn tiền của 6 tính năng, đối chiếu Figma Low-fi/Mid-fi và chạy thử vòng đời khép kín.',
+    slides: [
+      { idx: 7, code: '06', title: 'Ghi đúng món, tìm lại đúng chỗ' },
+      { idx: 8, code: '07', title: 'Biết món cần chú ý & giữ lượng chuẩn' },
+      { idx: 9, code: '08', title: 'Mua sắm có đối chiếu kho' },
+      { idx: 10, code: '09', title: 'Ràng buộc chất lượng (NFR)' },
+      { idx: 11, code: '10', title: 'Chạy thử trọn vẹn 1 vòng nghiệp vụ' },
+    ],
+  },
+  {
+    part: 'Phần IV',
+    duration: '~35 giây',
+    title: 'Kết luận & Kế hoạch tiếp theo',
+    desc: '6 giá trị đạt được, 53 màn hình Figma và định hướng phát triển bản web hoàn chỉnh.',
+    slides: [
+      { idx: 12, code: '11', title: 'Chốt kết luận & Kế hoạch' },
+    ],
+  },
+];
+
 export const SLIDE_TITLES = [
+  { id: 'intro', short: 'Mở đầu', section: 'Mở đầu báo cáo' },
+  { id: 'toc', short: '00 · Mục lục', section: 'Mục lục báo cáo' },
   { id: 'system', short: '01 · Hệ thống', section: '1. Định nghĩa hệ thống' },
   { id: 'needs', short: '02 · Nhu cầu', section: '2. Hiện trạng & Nhu cầu' },
   { id: 'goals', short: '03 · G1–G5', section: '3. Mục tiêu & Yêu cầu' },
@@ -93,11 +136,6 @@ export const TRACEABILITY_DATA = {
       label: 'Giao diện Cần chú ý & demo',
       role: 'Tính năng & Use Case',
     },
-    {
-      code: 'V07–V09 · M02',
-      label: 'Kiểm cơ chế; đánh giá người dùng hiểu & chọn bước phù hợp',
-      role: 'Kiểm chứng & Đo lường',
-    },
   ],
   g6Title: 'G6 / BREQ-06 — Ràng buộc phạm vi',
   g6Text:
@@ -116,9 +154,21 @@ export const SYSTEM_SLIDE = {
     { name: 'Cơ sở dữ liệu', tech: 'MySQL 8.4' },
   ],
   outsideBoundary: [
-    'Người dùng cá nhân',
-    'Camera & thư viện ảnh thiết bị',
-    'Thông báo trình duyệt / thiết bị',
+    {
+      role: 'Người dùng cá nhân',
+      type: 'Tác nhân (Actor)',
+      desc: 'Chủ thể tương tác: gửi dữ liệu, kiểm tra bản nháp và nhận cảnh báo.',
+    },
+    {
+      role: 'Camera & thư viện ảnh',
+      type: 'Tài nguyên thiết bị',
+      desc: 'Môi trường ngoại vi: cung cấp ảnh nhãn thực phẩm (ứng dụng chỉ xin quyền đọc).',
+    },
+    {
+      role: 'Thông báo trình duyệt',
+      type: 'Dịch vụ nền tảng',
+      desc: 'Kênh phát lời nhắc: phụ thuộc quyền cấp và khả năng hỗ trợ của thiết bị.',
+    },
   ],
   inScope: [
     'Tài khoản cá nhân (đăng ký, đăng nhập)',
@@ -193,7 +243,7 @@ export const FEATURE_CARDS = [
 ];
 
 export const F01_F03_DATA = {
-  badge: 'F01 · F02 · F03',
+  badge: 'PHẦN III · F01–F03 & FIGMA WIREFRAME',
   title: 'Ghi đúng món, tìm lại đúng chỗ',
   points: [
     {
@@ -246,7 +296,7 @@ export const F01_F03_DATA = {
 };
 
 export const F04_F05_DATA = {
-  badge: 'F04 · F05',
+  badge: 'PHẦN III · F04–F05 & FIGMA WIREFRAME',
   title: 'Biết món cần chú ý & giữ số lượng đáng tin',
   points: [
     {
@@ -292,7 +342,7 @@ export const F04_F05_DATA = {
 };
 
 export const F06_DATA = {
-  badge: 'F06',
+  badge: 'PHẦN III · F06 · MUA SẮM & ĐỐI CHIẾU KHO',
   title: 'Mua dựa trên dữ liệu kho đã ghi',
   points: [
     {
@@ -349,7 +399,7 @@ export const F06_DATA = {
 };
 
 export const NFR_DATA = {
-  badge: 'YÊU CẦU PHI CHỨC NĂNG (NFR · NR-01 ĐẾN NR-15)',
+  badge: 'PHẦN III · RÀNG BUỘC CHẤT LƯỢNG (NFR)',
   title: 'Ràng buộc chất lượng giúp dữ liệu đáng tin và dễ dùng',
   groups: [
     {

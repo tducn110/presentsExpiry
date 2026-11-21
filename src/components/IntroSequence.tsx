@@ -193,14 +193,11 @@ export const IntroSequence: React.FC<IntroSequenceProps> = ({ onComplete }) => {
 
         {/* Course & Team Metadata */}
         <div className="mt-6 flex flex-wrap items-center justify-center gap-2.5 text-xs font-semibold text-[#625653] sm:text-sm">
-          <span className="intro-meta rounded-full border border-[#E7D8D4] bg-white px-3.5 py-1.5">
+          <span className="intro-meta rounded-full border border-[#E7D8D4] bg-white px-3.5 py-1.5 text-[#2D2524]">
             {HERO_META.course} · Báo cáo cuối kỳ
           </span>
-          <span className="intro-meta rounded-full border border-[#E7D8D4] bg-white px-3.5 py-1.5 text-[#2D2524]">
-            {HERO_META.team}: {HERO_META.members.join(' · ')}
-          </span>
-          <span className="intro-meta rounded-full border border-[#E7D8D4] bg-white px-3.5 py-1.5">
-            {HERO_META.advisor}
+          <span className="intro-meta rounded-full border border-[#E7D8D4] bg-white px-3.5 py-1.5 font-bold text-[#D43A52]">
+            {HERO_META.team}
           </span>
         </div>
 

@@ -78,11 +78,6 @@ export const SlideNfr: React.FC = () => {
           );
         })}
       </div>
-
-      {/* Honest Verification Footer */}
-      <div className="nfr-anim rounded-xl border border-[#E7D8D4] bg-[#FFF3F0] px-4 py-2.5 text-xs font-semibold text-[#625653]">
-        {NFR_DATA.footerNote}
-      </div>
     </div>
   );
 };

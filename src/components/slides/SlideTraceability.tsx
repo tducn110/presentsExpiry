@@ -24,10 +24,10 @@ export const SlideTraceability: React.FC = () => {
     <div ref={ref} className="flex h-full flex-col justify-between gap-4">
       <div className="tr-anim">
         <span className="inline-block rounded-full bg-[#FFE6E2] px-3 py-1 text-xs font-bold text-[#B72F45]">
-          3 · TRUY VẾT &amp; RÀNG BUỘC PHẠM VI
+          PHẦN II · TRUY VẾT &amp; RÀNG BUỘC PHẠM VI (G6)
         </span>
         <h2 className="mt-2 text-2xl font-extrabold tracking-tight text-[#2D2524] sm:text-3xl">
-          Truy vết từ mục tiêu đến thiết kế và cách kiểm chứng
+          Truy vết từ mục tiêu đến giao diện
         </h2>
       </div>
 
@@ -42,7 +42,7 @@ export const SlideTraceability: React.FC = () => {
       </div>
 
       {/* Traceability Chain */}
-      <div className="tr-anim grid grid-cols-1 items-stretch gap-2.5 lg:grid-cols-5">
+      <div className="tr-anim grid grid-cols-1 items-stretch gap-2.5 lg:grid-cols-4">
         {TRACEABILITY_DATA.chain.map((node, idx) => (
           <div key={node.code} className="flex items-stretch gap-2">
             <div className="flex flex-1 flex-col justify-between rounded-2xl border border-[#E7D8D4] bg-white p-4">

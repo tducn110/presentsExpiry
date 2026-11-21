@@ -33,7 +33,7 @@ export const SlideWorkflow: React.FC = () => {
       <div className="flex flex-wrap items-end justify-between gap-3">
         <div>
           <span className="inline-block rounded-full bg-[#FFE6E2] px-3 py-1 text-xs font-bold text-[#B72F45]">
-            4 · LUỒNG NGHIỆP VỤ TỔNG THỂ
+            PHẦN III · CHẠY THỬ VÒNG NGHIỆP VỤ THỰC TẾ
           </span>
           <h2 className="mt-2 text-2xl font-extrabold tracking-tight text-[#2D2524] sm:text-3xl">
             Ghi nhận → Sử dụng → Đối chiếu → Mua tiếp

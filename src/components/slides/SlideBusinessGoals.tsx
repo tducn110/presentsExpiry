@@ -24,7 +24,7 @@ export const SlideBusinessGoals: React.FC = () => {
     <div ref={ref} className="flex h-full flex-col justify-between gap-3.5">
       <div className="bg-anim">
         <span className="inline-block rounded-full bg-[#FFE6E2] px-3 py-1 text-xs font-bold text-[#B72F45]">
-          3 · MỤC TIÊU &amp; YÊU CẦU KINH DOANH
+          PHẦN II · MỤC TIÊU &amp; YÊU CẦU KINH DOANH (G1–G5)
         </span>
         <h2 className="mt-2 text-2xl font-extrabold tracking-tight text-[#2D2524] sm:text-3xl">
           Từ nhu cầu đến G1–G5 và BREQ-01–05

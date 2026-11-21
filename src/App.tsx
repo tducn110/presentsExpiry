@@ -1,9 +1,10 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
-import { ChevronLeft, ChevronRight, Maximize2, Minimize2, RotateCcw } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Maximize2, Minimize2 } from 'lucide-react';
 import { ExpiryLogo } from './components/ExpiryLogo';
-import { IntroSequence } from './components/IntroSequence';
+import { SlideIntro } from './components/slides/SlideIntro';
+import { SlideToc } from './components/slides/SlideToc';
 import { SlideSystemDef } from './components/slides/SlideSystemDef';
 import { SlideNeeds } from './components/slides/SlideNeeds';
 import { SlideBusinessGoals } from './components/slides/SlideBusinessGoals';
@@ -23,7 +24,6 @@ import {
 gsap.registerPlugin(useGSAP);
 
 export default function App() {
-  const [showIntro, setShowIntro] = useState(true);
   const [slideIdx, setSlideIdx] = useState(0);
   const [isFullscreen, setIsFullscreen] = useState(false);
 
@@ -32,15 +32,15 @@ export default function App() {
 
   const { contextSafe } = useGSAP(
     () => {
-      if (!showIntro && stageRef.current) {
+      if (stageRef.current) {
         gsap.fromTo(
           stageRef.current,
           { opacity: 0, y: 12 },
-          { opacity: 1, y: 0, duration: 0.35, ease: 'power2.out' }
+          { opacity: 1, duration: 0.35, ease: 'power2.out' }
         );
       }
     },
-    { scope: deckRef, dependencies: [slideIdx, showIntro], revertOnUpdate: true }
+    { scope: deckRef, dependencies: [slideIdx], revertOnUpdate: true }
   );
 
   const goToSlide = useCallback(
@@ -62,11 +62,6 @@ export default function App() {
     [slideIdx]
   );
 
-  const replayIntro = useCallback(() => {
-    setSlideIdx(0);
-    setShowIntro(true);
-  }, []);
-
   const toggleFullscreen = useCallback(() => {
     if (!document.fullscreenElement) {
       document.documentElement.requestFullscreen?.().catch(() => {});
@@ -83,13 +78,6 @@ export default function App() {
 
   useEffect(() => {
     const onKeyDown = (e: KeyboardEvent) => {
-      if (showIntro) {
-        if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'Enter') {
-          e.preventDefault();
-          setShowIntro(false);
-        }
-        return;
-      }
       if (e.key === 'ArrowRight' || e.key === 'PageDown' || e.key === ' ') {
         e.preventDefault();
         goToSlide(slideIdx + 1);
@@ -102,29 +90,25 @@ export default function App() {
     };
     window.addEventListener('keydown', onKeyDown);
     return () => window.removeEventListener('keydown', onKeyDown);
-  }, [showIntro, slideIdx, goToSlide, toggleFullscreen]);
-
-  if (showIntro) {
-    return (
-      <div className="h-screen w-screen overflow-hidden bg-[#FFF8F7]">
-        <IntroSequence onComplete={() => setShowIntro(false)} />
-      </div>
-    );
-  }
+  }, [slideIdx, goToSlide, toggleFullscreen]);
 
   const renderSlide = () => {
     switch (slideIdx) {
       case 0:
-        return <SlideSystemDef />;
+        return <SlideIntro onStart={() => goToSlide(1)} />;
       case 1:
-        return <SlideNeeds />;
+        return <SlideToc onSelectSlide={goToSlide} />;
       case 2:
-        return <SlideBusinessGoals />;
+        return <SlideSystemDef />;
       case 3:
-        return <SlideTraceability />;
+        return <SlideNeeds />;
       case 4:
-        return <SlideFeaturesOverview />;
+        return <SlideBusinessGoals />;
       case 5:
+        return <SlideTraceability />;
+      case 6:
+        return <SlideFeaturesOverview />;
+      case 7:
         return (
           <SlideFeatureGroup
             badge={F01_F03_DATA.badge}
@@ -133,7 +117,7 @@ export default function App() {
             wireframes={F01_F03_DATA.wireframes}
           />
         );
-      case 6:
+      case 8:
         return (
           <SlideFeatureGroup
             badge={F04_F05_DATA.badge}
@@ -142,7 +126,7 @@ export default function App() {
             wireframes={F04_F05_DATA.wireframes}
           />
         );
-      case 7:
+      case 9:
         return (
           <SlideFeatureGroup
             badge={F06_DATA.badge}
@@ -152,11 +136,11 @@ export default function App() {
             wireframes={F06_DATA.wireframes}
           />
         );
-      case 8:
-        return <SlideNfr />;
-      case 9:
-        return <SlideWorkflow />;
       case 10:
+        return <SlideNfr />;
+      case 11:
+        return <SlideWorkflow />;
+      case 12:
         return <SlideConclusion />;
       default:
         return null;
@@ -202,15 +186,6 @@ export default function App() {
         <div className="flex items-center gap-1.5">
           <button
             type="button"
-            onClick={replayIntro}
-            className="inline-flex cursor-pointer items-center gap-1 rounded-lg border border-[#E7D8D4] bg-[#FFF8F7] px-2.5 py-1.5 text-xs font-bold text-[#625653] transition-colors hover:border-[#FFC4BC] hover:text-[#B72F45]"
-            title="Phát lại màn hình mở đầu 10s"
-          >
-            <RotateCcw className="h-3.5 w-3.5" />
-            <span className="hidden sm:inline">Intro 10s</span>
-          </button>
-          <button
-            type="button"
             onClick={toggleFullscreen}
             className="cursor-pointer rounded-lg border border-[#E7D8D4] bg-[#FFF8F7] p-1.5 text-[#625653] transition-colors hover:border-[#FFC4BC] hover:text-[#B72F45]"
             title={isFullscreen ? 'Thoát toàn màn hình' : 'Toàn màn hình (F)'}
@@ -231,9 +206,12 @@ export default function App() {
       <footer className="flex shrink-0 items-center justify-between border-t border-[#E7D8D4] bg-white px-5 py-2">
         <div className="flex items-center gap-2 text-xs font-bold text-[#625653]">
           <span className="text-[#D43A52]">
-            {slideIdx + 1} / {SLIDE_TITLES.length}
+            {slideIdx === 0
+              ? 'Mở đầu'
+              : slideIdx === 1
+              ? 'Mục lục'
+              : `${slideIdx - 1} / ${SLIDE_TITLES.length - 2}`}
           </span>
-          <span className="hidden sm:inline">· {SLIDE_TITLES[slideIdx].section}</span>
         </div>
 
         <div className="flex items-center gap-1.5">

@@ -24,7 +24,7 @@ export const SlideNeeds: React.FC = () => {
     <div ref={ref} className="flex h-full flex-col justify-between gap-4">
       <div className="need-anim">
         <span className="inline-block rounded-full bg-[#FFE6E2] px-3 py-1 text-xs font-bold text-[#B72F45]">
-          2 · VÌ SAO CẦN EXPIRY?
+          PHẦN I · HIỆN TRẠNG &amp; GIẢ ĐỊNH BÀI TOÁN
         </span>
         <h2 className="mt-2 text-2xl font-extrabold tracking-tight text-[#2D2524] sm:text-3xl">
           Từ giả định hiện trạng đến nhu cầu người dùng
